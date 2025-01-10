@@ -6,14 +6,8 @@
     <title>Check Docs</title>
   </head>
   <body>
-    <form
-      id="uploadForm"
-      enctype="multipart/form-data"
-      method="POST"
-      action="/upload"
-    >
-      <input type="file" name="pngFile" accept="image/png" required />
-      <button type="submit">Upload PNG</button>
-    </form>
+      <input type="file" id="fileInput" accept="image/png" required />
+      <button id="uploadBtn" onclick="sendImage()">Upload PNG</button>
   </body>
+  <script src="index.js"></script>
 </html>

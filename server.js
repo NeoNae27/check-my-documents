@@ -17,14 +17,6 @@ const storage = multer.diskStorage({
   },
 });
 
-// const fileFilter = (req, file, cb) => {
-//   if (file.mimetype === "image/png") {
-//     cb(null, true);
-//   } else {
-//     cb(new Error("Можно загружать только PNG файлы!"));
-//   }
-// };
-
 const upload = multer({ storage });
 
 const __filename = fileURLToPath(import.meta.url);
@@ -38,22 +30,13 @@ app.get("/", (req, res) => {
 });
 
 app.post("/upload", upload.single("pngFile"), (req, res) => {
-  console.log(req.file); // Debugging
   if (!req.file) {
-    return res.status(400).send("No file uploaded!");
+    return res.status(400).send("Файл не был загружен!");
   }
 
-  const filePath = req.file.path; // Temporary file path
-  const originalName = req.file.originalname;
-});
-
-app.use((err, req, res, next) => {
-  if (err) {
-    console.error(err.message);
-    res.status(400).send(err.message);
-  } else {
-    next();
-  }
+  const filePath = req.file.path;
+  console.log(`Файл загружен: ${filePath}`);
+  res.send(`Файл загружен: ${filePath}`);
 });
 
 app.listen(PORT, () => {
