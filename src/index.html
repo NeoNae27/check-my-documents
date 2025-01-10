@@ -8,11 +8,12 @@
   <body>
     <form
       id="uploadForm"
+      enctype="multipart/form-data"
       method="POST"
       action="/upload"
     >
-      <input type="file" name="pdfFile" accept="application/pdf" required />
-      <button type="submit">Upload PDF</button>
+      <input type="file" name="pngFile" accept="image/png" required />
+      <button type="submit">Upload PNG</button>
     </form>
   </body>
 </html>
