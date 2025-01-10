@@ -20,13 +20,20 @@ async function sendImage() {
     });
 
     if (response.ok) {
-      const result = await response.text();
-      alert(`Файл успешно загружен: ${result}`);
+      const result = await response.json();
+      
+      const imageUrl = result.imageUrl;
+      const imageElement = document.createElement("img");
+      
+      imageElement.src = imageUrl;
+      document.body.appendChild(imageElement);
+      
+      alert(`File Load: ${result}`);
     } else {
-      alert(`Ошибка загрузки: ${response.statusText}`);
+      alert(`Load Error: ${response.statusText}`);
     }
   } catch (error) {
-    console.error("Ошибка:", error);
-    alert("Не удалось загрузить файл.");
+    console.error("Error:", error);
+    alert("Fatal Error");
   }
 }
