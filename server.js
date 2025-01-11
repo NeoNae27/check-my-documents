@@ -45,6 +45,8 @@ app.post("/upload", upload.single("pngFile"), async (req, res) => {
   const result = await docAnswer(filePath, question);
 
   res.json({ imageUrl: filePath, answer: result });
+
+  
 });
 
 // LISTEN

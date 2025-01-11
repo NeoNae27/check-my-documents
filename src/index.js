@@ -4,10 +4,10 @@ async function sendImage() {
   const fileInput = document.getElementById("fileInput");
   const questionInput = document.getElementById("questionInput");
   const answerArea = document.getElementById("answerArea");
+  
   const file = fileInput.files[0];
   const question = questionInput.value;
-  console.log(" QA " + question)
-
+  
   if (!file) {
     alert("Please Select a File!");
     return;
@@ -16,6 +16,7 @@ async function sendImage() {
   const formData = new FormData();
   formData.append("pngFile", file);
   formData.append("userQuestion", question);
+  console.log(formData)
 
   try {
     const response = await fetch("/upload", {
@@ -28,11 +29,14 @@ async function sendImage() {
 
       const imageUrl = result.imageUrl;
       const answer = result.answer;
-
+      
       const imageElement = document.createElement("img");
+      const resultsArea = document.getElementById("resultsArea");
+      
       answerArea.value = answer;
       imageElement.src = imageUrl;
-      document.body.appendChild(imageElement);
+      
+      resultsArea.appendChild(imageElement);
     } else {
       alert(`Load Error: ${response.statusText}`);
     }

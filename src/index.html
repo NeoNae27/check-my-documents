@@ -3,13 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Check Docs</title>
   </head>
   <body>
+    <div id="inputForm">
       <input type="file" id="fileInput" accept="image/png" required />
-      <input type="text" id="questionInput">
+      <textarea type="text" id="questionInput"></textarea>
       <button id="uploadBtn" onclick="sendImage()">Upload PNG</button>
+    </div>
+    <div id="resultsArea">
       <textarea id="answerArea"></textarea>
+    </div>
   </body>
   <script src="index.js"></script>
 </html>
